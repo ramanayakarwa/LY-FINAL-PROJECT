@@ -1,0 +1,27 @@
+# Frontend generated files
+**/.vite/
+**/dist/
+
+# Python generated files
+**/venv/
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Dependencies
+**/node_modules/
+
+# Training data and runtime
+/backend/data/
+/backend/logs/
+/backend/runtime/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+
+/backend/uploads/

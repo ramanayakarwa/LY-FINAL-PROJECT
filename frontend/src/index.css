@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 5% 96%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 22 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 240 10% 3.9%;
+
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --critical: 0 84% 60%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 22 100% 50%;
+
+    --radius: 0.125rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 22 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 10% 3.9%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 22 100% 50%;
+
+    --shadow-sharp: 0 1px 2px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.05);
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono) !important;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .ares-card {
+    @apply bg-card border border-border p-6;
+    box-shadow: var(--shadow-sharp);
+  }
+
+  .ares-button {
+    @apply px-4 py-3 font-bold text-sm uppercase tracking-wider rounded-sm transition-transform duration-150;
+  }
+
+  .ares-button:active {
+    transform: scale(0.98);
+  }
+
+  .ares-button-primary {
+    @apply ares-button bg-primary text-primary-foreground;
+  }
+
+  .ares-button-primary:hover {
+    background: hsl(22 100% 45%);
+  }
+
+  .ares-button-accent {
+    @apply ares-button bg-accent text-accent-foreground;
+  }
+
+  .ares-button-accent:hover {
+    background: hsl(221 83% 48%);
+  }
+
+  .ares-button-destructive {
+    @apply ares-button bg-destructive text-destructive-foreground;
+  }
+
+  .ares-label {
+    @apply text-[10px] font-mono uppercase tracking-widest text-muted-foreground;
+  }
+
+  .ares-value {
+    @apply text-lg font-bold tabular-nums text-foreground;
+  }
+
+  .ares-heading {
+    @apply text-sm font-bold uppercase tracking-wide text-foreground;
+  }
+
+  .ares-mono {
+    font-family: var(--font-mono);
+    @apply text-xs;
+  }
+
+  .status-pulse {
+    @apply h-3 w-3 rounded-full;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .status-pulse-active {
+    @apply status-pulse bg-success;
+  }
+
+  .status-pulse-warning {
+    @apply status-pulse bg-warning;
+  }
+
+  .status-pulse-critical {
+    @apply status-pulse bg-critical;
+  }
+
+  .terminal-bg {
+    @apply bg-foreground rounded-sm p-4 font-mono text-xs overflow-hidden;
+    color: hsl(var(--success));
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
